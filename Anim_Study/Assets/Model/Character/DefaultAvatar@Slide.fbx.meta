@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: eebc354bae1b3495383c709bb24ada21
-timeCreated: 1512705343
+timeCreated: 1513078189
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -159,7 +159,7 @@ ModelImporter:
     400148: Spine
     400150: TongueBack
     400152: TongueTip
-    7400000: _29_B_a_U1_M_P_RunSlide_ToRight_R_Fb_p0_No_0_2
+    7400000: Slide
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -174,9 +174,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'LeftLeg'
-      : position error = 7.696519 mm\n\t'LeftFoot' : position error = 15.233780 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -189,7 +187,66 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Slide
+      takeName: _29_B_a_U1_M_P_RunSlide_ToRight_R_Fb_p0_No_0_2
+      firstFrame: 262
+      lastFrame: 308
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Collider
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 2
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.14784043
+            value: 0.50512695
+            inSlope: 3.7090833
+            outSlope: 3.7090833
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.7750681
+            value: 0.5088211
+            inSlope: -3.1793783
+            outSlope: -3.1793783
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -681,8 +738,8 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: LeftFoot
       parentName: LeftLeg
-      position: {x: -0.0051529994, y: -0.4231559, z: -0.027648851}
-      rotation: {x: -0.68071896, y: 0.025554651, z: 0.010917549, w: 0.7320174}
+      position: {x: -0.005153008, y: -0.42315602, z: -0.0276483}
+      rotation: {x: -0.27779266, y: 0.1819785, z: 0.43592706, w: 0.8364704}
       scale: {x: 1, y: 1, z: 1}
     - name: LeftToes
       parentName: LeftFoot
@@ -1032,7 +1089,7 @@ ModelImporter:
     - name: RightHandThumb2
       parentName: RightHandThumb1
       position: {x: 0.016374, y: -0.00529, z: 0.02349136}
-      rotation: {x: -0.04155833, y: -0.098565236, z: -0.016178334, w: 0.9941308}
+      rotation: {x: -0.041558333, y: -0.09856524, z: -0.016178336, w: 0.99413085}
       scale: {x: 1, y: 1, z: 1}
     - name: RightHandThumb3
       parentName: RightHandThumb2

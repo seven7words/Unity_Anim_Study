@@ -16,34 +16,40 @@ public class Player : MonoBehaviour {
     private int speedZId = Animator.StringToHash("SpeedZ");
     private int vaultId = Animator.StringToHash("Vault");
     private int colliderId = Animator.StringToHash("Collider");
+    private int isHoldLogId = Animator.StringToHash("IsHoldLog");
     private CharacterController characterController;
     private Vector3 matchTarget = Vector2.zero;
+    private GameObject unityLog = null;
+    private int sliderId = Animator.StringToHash("Slider");
     #endregion
     #region 事件
     #endregion
     #region 方法
-    #endregion
-    #region Unity回调
-        // Use this for initialization
-        void Start () {
-            animator = gameObject.GetComponent<Animator>();
-            characterController = gameObject.GetComponent<CharacterController>();
 
+        private void ProcessSlider(){
+            bool isSlider = false;
+             if(animator.GetFloat(speedZId)>3&&animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion")){
+                  RaycastHit hit;
+                 if(Physics.Raycast(transform.position+Vector3.up*1.5f,transform.forward,out hit,2)){
+                    if(hit.collider.tag == "Obstacle"){
+                        if(hit.distance>1)
+                        {
+                            Vector3 point = hit.point;
+                            point.y = 0;
+                            matchTarget =   point+transform.forward*2;
+                            isSlider = true;
+                        }          
+                    }
+                 }
+             }
+             animator.SetBool(sliderId,isSlider);
+              if(animator.GetCurrentAnimatorStateInfo(0).IsName("Slider")&&animator.IsInTransition(0)==false){
+               animator.MatchTarget(matchTarget,Quaternion.identity,AvatarTarget.LeftHand,new MatchTargetWeightMask(Vector3.one,0),0.32f,0.4f);
+
+            }
         }
-        
-        // Update is called once per frame
-        void Update () {
-            animator.SetFloat(speedZId,Input.GetAxis("Vertical")*4.1f);
-            animator.SetFloat(speedRotateId,Input.GetAxis("Horizontal")*126f);
-            // animator.SetFloat(speedID,Input.GetAxisRaw("Vertical")*4.1f);
-            // animator.SetFloat(horizontalId,Input.GetAxis("Horizontal"));
-            // if(Input.GetKeyDown(KeyCode.LeftShift)){
-            //     animator.SetBool(IsSpeedUpId,true);
-            // }
-            // if(Input.GetKeyUp(KeyCode.LeftShift)){
-            //     animator.SetBool(IsSpeedUpId,false);
-            // }
-            bool isVault =false;
+        private void ProcessVault(){
+             bool isVault =false;
             if(animator.GetFloat(speedZId)>3&&animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion")){
                 RaycastHit hit;
                 if(Physics.Raycast(transform.position+Vector3.up*0.3f,transform.forward,out hit,4)){
@@ -62,7 +68,7 @@ public class Player : MonoBehaviour {
             }
             animator.SetBool(vaultId,isVault);
             if(animator.GetCurrentAnimatorStateInfo(0).IsName("Vault")&&animator.IsInTransition(0)==false){
-               animator.MatchTarget(matchTarget,Quaternion.identity,AvatarTarget.LeftHand,new MatchTargetWeightMask(Vector3.one,0),0.32f,0.4f);
+               animator.MatchTarget(matchTarget,Quaternion.identity,AvatarTarget.Root,new MatchTargetWeightMask(new Vector3(1,0,1),0),0.17f,0.67f);
 
             }
             if(animator.GetFloat(colliderId)>0.5f){
@@ -70,7 +76,42 @@ public class Player : MonoBehaviour {
             }else{
                 characterController.enabled = true;
             }
+        }
+    #endregion
+    #region Unity回调
+        // Use this for initialization
+        void Start () {
+            animator = gameObject.GetComponent<Animator>();
+            characterController = gameObject.GetComponent<CharacterController>();
+            unityLog = transform.Find("Log").gameObject;
+        }
+        
+        // Update is called once per frame
+        void Update () {
+            animator.SetFloat(speedZId,Input.GetAxis("Vertical")*4.1f);
+            animator.SetFloat(speedRotateId,Input.GetAxis("Horizontal")*126f);
+            ProcessVault();
+            ProcessSlider();
+            // animator.SetFloat(speedID,Input.GetAxisRaw("Vertical")*4.1f);
+            // animator.SetFloat(horizontalId,Input.GetAxis("Horizontal"));
+            // if(Input.GetKeyDown(KeyCode.LeftShift)){
+            //     animator.SetBool(IsSpeedUpId,true);
+            // }
+            // if(Input.GetKeyUp(KeyCode.LeftShift)){
+            //     animator.SetBool(IsSpeedUpId,false);
+            // }
+           
 
+        }
+        void OnTriggerEnter(Collider other){
+            if(other.tag == "Log"){
+                Destroy(other.gameObject);
+                CarryWood();
+            }
+        }
+        void CarryWood(){
+            unityLog.SetActive(true);
+            animator.SetBool(isHoldLogId,true);
         }
     #endregion
     #region  事件回调
