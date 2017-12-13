@@ -19,7 +19,9 @@ public class Player : MonoBehaviour {
     private int isHoldLogId = Animator.StringToHash("IsHoldLog");
     private CharacterController characterController;
     private Vector3 matchTarget = Vector2.zero;
-    private GameObject unityLog = null;
+    public GameObject unityLog = null;
+    public Transform LeftHand;
+    public Transform RightHand;
     private int sliderId = Animator.StringToHash("Slider");
     #endregion
     #region 事件
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour {
         void Start () {
             animator = gameObject.GetComponent<Animator>();
             characterController = gameObject.GetComponent<CharacterController>();
-            unityLog = transform.Find("Log").gameObject;
+            //unityLog = transform.Find("Log").gameObject;
         }
         
         // Update is called once per frame
@@ -111,7 +113,20 @@ public class Player : MonoBehaviour {
         }
         void CarryWood(){
             unityLog.SetActive(true);
+            Debug.Log(unityLog);
             animator.SetBool(isHoldLogId,true);
+        }
+        private void OnAnimatorIK(int layerIndex) {
+            if(layerIndex==1){
+                int weight = animator.GetBool(isHoldLogId)?1:0;
+                //当前是被HoldLog这一层调用的
+                animator.SetIKPosition(AvatarIKGoal.LeftHand,LeftHand.transform.position);
+                animator.SetIKRotation(AvatarIKGoal.LeftHand,LeftHand.transform.rotation);
+                //aniamtor.SetIKPositionWeight(AvatarIKGoal.LeftHand,1);
+                animator.SetIKPositionWeight(AvatarIKGoal.LeftHand,weight);
+                animator.SetIKPosition(AvatarIKGoal.RightHand,RightHand.transform.position);
+                animator.SetIKPositionWeight(AvatarIKGoal.RightHand,weight);
+            }
         }
     #endregion
     #region  事件回调

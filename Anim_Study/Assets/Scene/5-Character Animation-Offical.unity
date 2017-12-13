@@ -112,6 +112,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &82930158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 82930159}
+  m_Layer: 0
+  m_Name: RightHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &82930159
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82930158}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.134, y: -0.068, z: 0.239}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 693457303}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &265554132 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: d04f7b47d09f24495be023d1e2dacaa7, type: 3}
@@ -127,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91718d94bd32f4bf29ea23ee0defad3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftHand: {fileID: 1330398364}
+  RightHand: {fileID: 82930159}
 --- !u!143 &265554136
 CharacterController:
   m_ObjectHideFlags: 0
@@ -404,6 +434,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48203a00990c046079a8a378663239a0, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &693457303 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400002, guid: 48203a00990c046079a8a378663239a0, type: 3}
+  m_PrefabInternal: {fileID: 1774934216}
 --- !u!1 &799314693 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 48203a00990c046079a8a378663239a0, type: 3}
@@ -436,6 +470,34 @@ SphereCollider:
 Transform:
   m_PrefabParentObject: {fileID: 400084, guid: d04f7b47d09f24495be023d1e2dacaa7, type: 3}
   m_PrefabInternal: {fileID: 1973930749}
+--- !u!1 &1330398363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1330398364}
+  m_Layer: 0
+  m_Name: LeftHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330398364
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330398363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.147, y: 0, z: 0.239}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 693457303}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682834565
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +572,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 48203a00990c046079a8a378663239a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.139
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 48203a00990c046079a8a378663239a0, type: 3}
       propertyPath: m_LocalPosition.y
