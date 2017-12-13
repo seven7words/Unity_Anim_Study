@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Playables;
 public class Player : MonoBehaviour {
     #region 常量
     #endregion
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     public GameObject unityLog = null;
     public Transform LeftHand;
     public Transform RightHand;
+    public PlayableDirector director;
     private int sliderId = Animator.StringToHash("Slider");
     #endregion
     #region 事件
@@ -109,6 +110,10 @@ public class Player : MonoBehaviour {
             if(other.tag == "Log"){
                 Destroy(other.gameObject);
                 CarryWood();
+            }
+            if(other.tag =="Playable"){
+                Debug.Log("????");
+                director.Play();
             }
         }
         void CarryWood(){
